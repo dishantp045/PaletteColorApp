@@ -1,5 +1,6 @@
 package edu.temple.palettecolorapp;
 
+import android.content.Intent;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,19 +13,19 @@ import android.view.View;
 public class PaletteActivity extends AppCompatActivity {
 
     private final String colors[] = {"white", "blue", "green", "purple", "red", "gray", "cyan", "magenta", "yellow", "lime"};
-
+    private boolean isSelected = true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_palette);
-
+        final Intent intent = new Intent(this,ColorActivity.class);
 
         final Spinner spinner = findViewById(R.id.spinner1);
         spinner.setAdapter(new PaletteAdapter(this, colors));
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
+                intent.putExtra(colors[position],0);
             }
 
             @Override
