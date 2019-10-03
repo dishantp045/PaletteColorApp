@@ -12,7 +12,7 @@ import android.view.View;
 
 public class PaletteActivity extends AppCompatActivity {
 
-    private final String colors[] = {"white", "blue", "green", "purple", "red", "gray", "cyan", "magenta", "yellow", "lime"};
+    private final String colors[] = {"blue", "green", "purple", "red", "gray", "cyan", "magenta", "yellow", "lime"};
     private boolean isSelected = true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +25,8 @@ public class PaletteActivity extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                intent.putExtra(colors[position],0);
+                intent.putExtra("backgroundColor",colors[position]);
+                startActivity(intent);
             }
 
             @Override
