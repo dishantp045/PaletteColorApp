@@ -5,15 +5,4 @@
     android:id="@+id/color_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ColorActivity">
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
-        android:layout_marginTop="290dp"
-        android:text="Test Color"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</android.support.constraint.ConstraintLayout>
+    tools:context=".ColorActivity"/>
