@@ -10,6 +10,7 @@ public class ColorActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle("Color Activity");
         setContentView(R.layout.activity_color);
         ConstraintLayout layout = findViewById(R.id.color_layout);
         Bundle paletteData = getIntent().getExtras();
