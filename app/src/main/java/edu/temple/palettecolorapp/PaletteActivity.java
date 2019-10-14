@@ -13,7 +13,7 @@ import android.view.View;
 
 public class PaletteActivity extends AppCompatActivity {
 
-    //private final String translation[] = {"blue", "green", "purple", "red", "gray", "cyan", "magenta", "yellow", "lime"};
+    private final String colors[] = {"blue", "green", "purple", "red", "gray", "cyan", "magenta", "yellow", "lime"};
     private boolean isSelected = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,11 +23,11 @@ public class PaletteActivity extends AppCompatActivity {
         String title = res.getString(R.string.palette_title);
         setTitle(title);
         setContentView(R.layout.activity_palette);
-        final String colors[] = res.getStringArray(R.array.colors);
+        final String translation[] = res.getStringArray(R.array.colors);
         //final Intent intent = new Intent(this,ColorActivity.class);
 
         final Spinner spinner = findViewById(R.id.spinner1);
-        spinner.setAdapter(new PaletteAdapter(this, colors));
+        spinner.setAdapter(new PaletteAdapter(this, colors,translation));
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

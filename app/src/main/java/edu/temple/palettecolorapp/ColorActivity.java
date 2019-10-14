@@ -14,9 +14,8 @@ public class ColorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Context context = getApplicationContext();
         Resources res = context.getResources();
-        String title = res.getString(R.string.palette_title);
+        String title = res.getString(R.string.color_title);
         setTitle(title);
-        setTitle("Color Activity");
         setContentView(R.layout.activity_color);
         ConstraintLayout layout = findViewById(R.id.color_layout);
         Bundle paletteData = getIntent().getExtras();

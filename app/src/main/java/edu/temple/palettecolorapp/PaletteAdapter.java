@@ -12,10 +12,12 @@ public class PaletteAdapter extends BaseAdapter {
 
     String colors[];
     Context c;
+    String translation[];
 
-    public PaletteAdapter(Context c, String colors[]){
+    public PaletteAdapter(Context c, String colors[], String translation[]){
         this.c = c;
         this.colors = colors;
+        this.translation = translation;
     }
     @Override
     public int getCount() {
@@ -35,7 +37,7 @@ public class PaletteAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         TextView textView = new TextView(c);
-        textView.setText(colors[position]);
+        textView.setText(translation[position]);
         textView.setId(position);
         textView.setTextSize(28);
         LinearLayout ll = new LinearLayout(c);
