@@ -1,6 +1,7 @@
 package edu.temple.palettecolorapp;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,15 +13,17 @@ import android.view.View;
 
 public class PaletteActivity extends AppCompatActivity {
 
-    private final String colors[] = {"blue", "green", "purple", "red", "gray", "cyan", "magenta", "yellow", "lime"};
+    //private final String colors[] = {"blue", "green", "purple", "red", "gray", "cyan", "magenta", "yellow", "lime"};
     private boolean isSelected = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTitle("Palette Activity");
         setContentView(R.layout.activity_palette);
-
-        final Intent intent = new Intent(this,ColorActivity.class);
+        Context context = getApplicationContext();
+        Resources res = context.getResources();
+        final String colors[] = res.getStringArray(R.array.colors);
+        //final Intent intent = new Intent(this,ColorActivity.class);
 
         final Spinner spinner = findViewById(R.id.spinner1);
         spinner.setAdapter(new PaletteAdapter(this, colors));
@@ -28,6 +31,7 @@ public class PaletteActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if(isSelected) {
+                    Intent intent = new Intent(PaletteActivity.this,ColorActivity.class);
                     intent.putExtra("backgroundColor", colors[position]);
                     startActivity(intent);
                 }
