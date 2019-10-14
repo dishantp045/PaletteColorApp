@@ -13,15 +13,16 @@ import android.view.View;
 
 public class PaletteActivity extends AppCompatActivity {
 
-    //private final String colors[] = {"blue", "green", "purple", "red", "gray", "cyan", "magenta", "yellow", "lime"};
+    //private final String translation[] = {"blue", "green", "purple", "red", "gray", "cyan", "magenta", "yellow", "lime"};
     private boolean isSelected = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTitle("Palette Activity");
-        setContentView(R.layout.activity_palette);
         Context context = getApplicationContext();
         Resources res = context.getResources();
+        String title = res.getString(R.string.palette_title);
+        setTitle(title);
+        setContentView(R.layout.activity_palette);
         final String colors[] = res.getStringArray(R.array.colors);
         //final Intent intent = new Intent(this,ColorActivity.class);
 

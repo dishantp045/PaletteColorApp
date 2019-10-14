@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PaletaColorApp</string>
+    <string name="palette_title">Actividad de paleta</string>
+    <string name = "color_title">Actividad de Color</string>
+    <string-array name = "colors">
+        <item>azul</item>
+        <item>verde</item>
+        <item>purpura</item>
+        <item>rojo</item>
+        <item>gris</item>
+        <item>cian</item>
+        <item>magenta</item>
+        <item>amarillo</item>
+        <item>lima</item>
+    </string-array>
+</resources>
