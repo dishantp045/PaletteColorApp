@@ -1,8 +1,11 @@
 <resources>
     <string name="app_name">PaletteColorApp</string>
     <string name="palette_title">Palette Activity</string>>
-    <string name = "color_title">Color Activity</string>
-    <string-array name = "colors">
+    <string name="color_title">Color Activity</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string-array name="colors">
         <item>blue</item>
         <item>green</item>
         <item>purple</item>
