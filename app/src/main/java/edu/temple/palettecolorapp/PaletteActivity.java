@@ -31,12 +31,7 @@ public class PaletteActivity extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if(isSelected) {
-                    Intent intent = new Intent(PaletteActivity.this,ColorActivity.class);
-                    intent.putExtra("backgroundColor", colors[position]);
-                    startActivity(intent);
-                }
-                isSelected = true;
+
             }
 
             @Override
