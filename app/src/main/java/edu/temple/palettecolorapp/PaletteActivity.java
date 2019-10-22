@@ -24,25 +24,6 @@ public class PaletteActivity extends AppCompatActivity {
         setTitle(title);
         setContentView(R.layout.activity_palette);
         final String translation[] = res.getStringArray(R.array.colors);
-        //final Intent intent = new Intent(this,ColorActivity.class);
 
-        final Spinner spinner = findViewById(R.id.spinner1);
-        spinner.setAdapter(new PaletteAdapter(this, colors,translation));
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if(isSelected) {
-                    Intent intent = new Intent(PaletteActivity.this,ColorActivity.class);
-                    intent.putExtra("backgroundColor", colors[position]);
-                    startActivity(intent);
-                }
-                isSelected = true;
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
     }
 }
