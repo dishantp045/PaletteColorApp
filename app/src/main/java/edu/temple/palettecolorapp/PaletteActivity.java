@@ -31,7 +31,7 @@ public class PaletteActivity extends AppCompatActivity implements PaletteFragmen
         setContentView(R.layout.activity_palette);
         String translation[] = res.getStringArray(R.array.colors);
         PaletteFragment master = PaletteFragment.newInstance(colors,translation);
-        ColorFragment subject = ColorFragment.newInstance("magenta");
+        subject = ColorFragment.newInstance();
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
         ft.add(R.id.fragment1,master);

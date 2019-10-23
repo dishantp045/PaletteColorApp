@@ -27,8 +27,8 @@ public class PaletteFragment extends Fragment {
     Context parent;
     private final String mParam1 = "colors";
     private final String mParam2 = "translation";
-    private OnFragmentInteractionListener mListener;
-
+    public OnFragmentInteractionListener mListener;
+    boolean check = false;
 
     public PaletteFragment() {
         // Required empty public constructor
@@ -60,6 +60,18 @@ public class PaletteFragment extends Fragment {
         }
 
     }
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        this.parent = context;
+        if (context instanceof OnFragmentInteractionListener) {
+            mListener = (OnFragmentInteractionListener) parent;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement OnFragmentInteractionListener");
+        }
+        // this.parent = context;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -68,12 +80,15 @@ public class PaletteFragment extends Fragment {
         Spinner spinner = v.findViewById(R.id.spinner);
         PaletteAdapter pa = new PaletteAdapter(parent,colorArr,translationArr);
         spinner.setAdapter(pa);
+
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String c = colorArr[position];
-                
-
+                if(check){
+                    String c = colorArr[position];
+                    mListener.onColorSelection(c);
+                }
+                check = true;
             }
 
             @Override
@@ -85,18 +100,7 @@ public class PaletteFragment extends Fragment {
     }
 
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        this.parent = context;
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-       // this.parent = context;
-    }
+
 
     @Override
     public void onDetach() {
