@@ -1,12 +1,14 @@
 package edu.temple.palettecolorapp;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Spinner;
 
 
@@ -20,8 +22,8 @@ import android.widget.Spinner;
  */
 public class PaletteFragment extends Fragment {
 
-    private String colors[];
-    private String translation[];
+    private String colorArr[];
+    private String translationArr[];
     Context parent;
     private final String mParam1 = "colors";
     private final String mParam2 = "translation";
@@ -53,8 +55,8 @@ public class PaletteFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            this.colors = getArguments().getStringArray(mParam1);
-            this.translation = getArguments().getStringArray(mParam2);
+            this.colorArr = getArguments().getStringArray(mParam1);
+            this.translationArr = getArguments().getStringArray(mParam2);
         }
 
     }
@@ -64,28 +66,36 @@ public class PaletteFragment extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_palette, container, false);
         Spinner spinner = v.findViewById(R.id.spinner);
-        PaletteAdapter pa = new PaletteAdapter(parent,colors,translation);
+        PaletteAdapter pa = new PaletteAdapter(parent,colorArr,translationArr);
         spinner.setAdapter(pa);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String c = colorArr[position];
+                
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
         return v;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        this.parent = context;
         if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
         }
-        this.parent = context;
+       // this.parent = context;
     }
 
     @Override
@@ -106,6 +116,6 @@ public class PaletteFragment extends Fragment {
      */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        public void onColorSelection(String color);
     }
 }

@@ -19,11 +19,10 @@ import android.view.ViewGroup;
  */
 public class ColorFragment extends Fragment {
 
+    private View v;
 
-
-
-
-
+    String color;
+    private final String KEY = "color";
     public ColorFragment() {
         // Required empty public constructor
     }
@@ -34,14 +33,20 @@ public class ColorFragment extends Fragment {
      * @return A new instance of fragment ColorFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ColorFragment newInstance() {
+    public static ColorFragment newInstance(String color) {
         ColorFragment fragment = new ColorFragment();
+        Bundle b = new Bundle();
+        b.putString("color",color);
+        fragment.setArguments(b);
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            this.color = getArguments().getString(KEY);
+        }
 
     }
 
@@ -49,8 +54,9 @@ public class ColorFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_color, container, false);
-        v.setBackgroundColor(Color.parseColor("maroon"));
+        v = inflater.inflate(R.layout.fragment_color, container, false);
+        v.setBackgroundColor(Color.BLACK);
+
         return v;
     }
 
@@ -68,8 +74,8 @@ public class ColorFragment extends Fragment {
 
     }
 
-    public void setBackgroundColor(String color){
-
+    public void updateBackgroundColor(String c){
+        getView().setBackgroundColor(Color.parseColor(c));
     }
 
 }
